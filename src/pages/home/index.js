@@ -14,9 +14,10 @@ import My from '../my'
 class Home extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      selectedTab: 'redTab'
-    };
+    // 如果当前的url为/home，让页面显示/home/index，即做路由重定向就可以了
+    if(this.props.location.pathname==='/home'){
+        this.props.history.push('/home/index')
+    }
   }
 
   renderContent(pageText) {

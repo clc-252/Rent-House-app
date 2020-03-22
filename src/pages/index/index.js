@@ -1,8 +1,12 @@
-import React, { Component,Fragment } from 'react';
+import React, { Component } from 'react';
+
+import MyCarousel from '../../demo/MyCarousel';
 class index extends Component {
     render() { 
         return ( 
-            <Fragment>首页</Fragment>
+            <div>
+                <MyCarousel></MyCarousel>
+            </div>
          );
     }
 }
