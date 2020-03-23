@@ -1,0 +1,24 @@
+.hk_index{
+    // background-color: pink;
+}
+
+// 首页导航的样式
+div.index_nav {
+    display: flex;
+    background-color: #fff;
+    div.nav_item {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      img {
+          width: 60%;
+          margin: 5px 0;
+      }
+  
+      p {
+  
+      }
+    }
+  }

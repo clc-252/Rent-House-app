@@ -1,5 +1,5 @@
 import React from 'react';
-// import Tabbar from './demo/Tabbar'
+
 // 引入路由
 import {HashRouter as Router,Route,Redirect} from 'react-router-dom';
 
