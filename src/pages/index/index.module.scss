@@ -65,4 +65,52 @@
           }
         }
       }
+}
+
+// 最新资讯
+.index_news {
+    padding: 0 15px;
+    background-color: #fff;
+    .index_news_title {
+        padding: 15px 0;
+        padding-bottom: 10px;
+        font-size: 18px;
+        font-weight: 700;
+        color: #000;
     }
+  
+    .index_news_content {
+      .news_item {
+          display: flex;
+          padding: 10px 0;
+          border-bottom: 1px solid #ddd;
+        .news_item_img {
+            flex: 2;
+          img {
+              width: 90%;
+          }
+        }
+  
+        .news_item_info {
+            flex: 3;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 0 10px 0 5px;
+          .news_item_title {
+              font-size: 16px;
+            font-weight: 700;
+            color: #000;
+          }
+  
+          .news_item_desc {
+              display: flex;
+              justify-content: space-between;
+            span {
+  
+            }
+          }
+        }
+      }
+    }
+  }

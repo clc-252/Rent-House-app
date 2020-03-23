@@ -30,7 +30,9 @@ class index extends Component {
             {id:3,text:'去出租',imgSrc:nav4}
         ],
         // 租房小组的数据
-        groups:[]
+        groups:[],
+        // 最新资讯的数据
+        news:[]
     }
     // 在组件挂载完毕之后发送请求，获取轮播图的数据
     async componentDidMount() {
@@ -38,6 +40,8 @@ class index extends Component {
         this.getCarousel()
         // 调用获取租房小组的数据
         this.getGroups()
+        // 调用获取最新资讯的数据
+        this.getNews()
     }
 
     // 获取轮播图数据
@@ -51,6 +55,13 @@ class index extends Component {
       const res=await axios.get('/home/groups')
       this.setState({groups:res.data.body})
     }
+    
+    // 获取最新资讯的数据
+    getNews=async()=>{
+      const res=await axios.get('/home/news')
+      this.setState({news:res.data.body})
+    }
+
     render() {
       return (
         <div className={indexCss.hk_index}>
@@ -111,6 +122,26 @@ class index extends Component {
             </div>
           </div>
           {/* 租房小组结束 */}
+
+          {/* 最新资讯开始 */}
+          <div className={indexCss.index_news}>
+            <div className={indexCss.index_news_title}>最新资讯</div>
+            <div className={indexCss.index_news_content}>
+              {this.state.news.map((v,i)=><div className={indexCss.news_item} key={i}>
+                <div className={indexCss.news_item_img}>
+                  <img src={baseURL+v.imgSrc} alt="" />
+                </div>
+                <div className={indexCss.news_item_info}>
+                  <div className={indexCss.news_item_title}>{v.title}</div>
+                  <div className={indexCss.news_item_desc}>
+                    <span>{v.from}</span>
+                    <span>{v.date}</span>
+                  </div>
+                </div>
+              </div>)}
+            </div>
+          </div>
+          {/* 最新资讯结束 */}
         </div>
         );
     }
