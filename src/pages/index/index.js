@@ -28,13 +28,28 @@ class index extends Component {
             {id:1,text:'合租',imgSrc:nav2},
             {id:2,text:'地图找房',imgSrc:nav3},
             {id:3,text:'去出租',imgSrc:nav4}
-        ]
+        ],
+        // 租房小组的数据
+        groups:[]
     }
     // 在组件挂载完毕之后发送请求，获取轮播图的数据
     async componentDidMount() {
-        const res=await axios.get('/home/swiper')
-        // console.log(res);
-        this.setState({carouselList:res.data.body})
+        // 调用获取轮播图数据
+        this.getCarousel()
+        // 调用获取租房小组的数据
+        this.getGroups()
+    }
+
+    // 获取轮播图数据
+    getCarousel=async()=>{
+      const res=await axios.get('/home/swiper')
+      this.setState({carouselList:res.data.body})
+    }
+
+    // 获取租房小组的数据
+    getGroups=async()=>{
+      const res=await axios.get('/home/groups')
+      this.setState({groups:res.data.body})
     }
     render() {
       return (
@@ -72,6 +87,30 @@ class index extends Component {
             </div> )}
           </div>
           {/* 首页导航结束 */}
+
+          {/* 租房小组开始 */}
+          <div className={indexCss.index_groups}>
+            {/* 标题 */}
+            <div className={indexCss.index_groups_title}>
+              <span>租房小组</span>
+              <a href="#">更多</a>
+            </div>
+            {/* 内容 */}
+            <div className={indexCss.index_groups_content}>
+              {this.state.groups.map(v=>
+                <div className={indexCss.group_item} key={v.id}>
+                  <div className={indexCss.group_item_info}>
+              <div className={indexCss.group_item_title}>{v.title}</div>
+              <div className={indexCss.group_item_desc}>{v.desc}</div>
+                  </div>
+                  <div className={indexCss.group_item_img}>
+                    <img src={baseURL+v.imgSrc} alt="" />
+                  </div>
+                </div>
+              )}
+            </div>
+          </div>
+          {/* 租房小组结束 */}
         </div>
         );
     }
